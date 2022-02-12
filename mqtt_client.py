@@ -1,5 +1,4 @@
-from config import config
-from time import gmtime, strftime
+from devices import garbage_config
 import paho.mqtt.client as mqtt
 import json
 
@@ -9,8 +8,8 @@ class MQTTClient:
 
         self.client.publish("kikkei/household/garbage", "ON")
 
-        self.client.publish(config["mqtt_topic_next"], json.dumps(config["mqtt_payload_next"]), retain=True)
-        self.client.publish(config["mqtt_topic_next_date"], json.dumps(config["mqtt_payload_next_date"]), retain=True)
+        self.client.publish(garbage_config["mqtt_topic_next"], json.dumps(garbage_config["mqtt_payload_next"]), retain=True)
+        self.client.publish(garbage_config["mqtt_topic_next_date"], json.dumps(garbage_config["mqtt_payload_next_date"]), retain=True)
 
     def on_message(self, client, userdata, msg):
         if self.delegate != None:
@@ -24,15 +23,14 @@ class MQTTClient:
             self.client.publish("kikkei/household/garbage/nextafter", events[1].get("garbage"))
             self.client.publish("kikkei/household/garbage/nextafter_date", events[1].get("when"))
 
-    def __init__(self):
+    def __init__(self, username, password, host, port):
         self.client = mqtt.Client()
 
-        self.client.username_pw_set(
-            config["hass_username"], password=config["hass_pwd"])
+        self.client.username_pw_set(username, password)
 
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
-        self.client.connect(config["mqtt_host"], config["mqtt_port"], 60)
+        self.client.connect(host, port, 60)
         self.delegate = None
 
     def loop(self):

@@ -1,0 +1,52 @@
+kids:
+  - id: ernesto
+    name: Ernesto
+    tasks:
+      - id: bed
+        name: Do the bed
+        value: 0.5
+      - id: clothes
+        name: Pick up the clothes
+        value: 0.5
+      - id: dirty
+        name: Throw dirty clothes
+        value: 0.5
+      - id: lunchbox
+        name: Take out the lunchbox
+        value: 0.5
+      - id: study
+        name: Study and do homework
+        value: 1.0
+      - id: dishes
+        name: Pasodamoika
+        value: 0.5
+      - id: spielplatz
+        name: Play with Robik at the spielplatz
+        value: 1.5
+  - id: azahara
+    name: Azahara
+    tasks:
+      - id: bed
+        name: Do the bed
+        value: 0.5
+      - id: clothes
+        name: Pick up the clothes
+        value: 0.5
+      - id: dirty
+        name: Throw dirty clothes
+        value: 0.5
+      - id: lunchbox
+        name: Take out the lunchbox
+        value: 0.5
+      - id: study
+        name: Study and do homework
+        value: 1.0
+      - id: dishes
+        name: Pasodamoika
+        value: 0.5
+      - id: spielplatz
+        name: Play with Robik at the spielplatz
+        value: 1.5
+      - id: hair
+        name: Brush the hair
+        value: 0.5

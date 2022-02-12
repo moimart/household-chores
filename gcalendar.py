@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2 import service_account
@@ -8,14 +7,9 @@ from google.oauth2 import service_account
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
 class GoogleCalendar:
-    def __init__(self):
-        self.words = [ 'Biogut', 'Hausmüll', 'Wertstoffe', 'Paper']
-        self.translations = {
-            "Biogut" : 'Bio' ,
-            "Hausmüll" : 'Gray Garbage',
-            "Wertstoffe" : 'Plastic',
-            'Paper' : 'Paper'
-        }
+    def __init__(self, words, translations):
+        self.words = words
+        self.translations = translations
 
     def string_date(self, date):
         if datetime.today().day + 2 == date.day:

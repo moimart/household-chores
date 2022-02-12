@@ -1,0 +1,20 @@
+types_of_garbage:
+  - Biogut
+  - Hausmüll
+  - Wertstoffe
+  - Paper
+
+garbage_translations:
+  Biogut: Bio
+  Hausmüll: Gray Garbage
+  Wertstoffe: Plastic
+  Paper: Paper
+
+mqtt:
+  username: homeassistant
+  password: 
+  host: "10.20.30.80"
+  port: 1883
+
+update_interval: 43200
+
