@@ -1,4 +1,13 @@
 kids:
+  - id: robi
+    name: Robi
+    tasks:
+      - id: bed
+        name: Do the bed
+        value: 0.1
+      - id: toys
+        name: Pickup the toys
+        value: 0.1
   - id: ernesto
     name: Ernesto
     tasks:
@@ -18,7 +27,7 @@ kids:
         name: Study and do homework
         value: 1.0
       - id: dishes
-        name: Pasodamoika
+        name: Посудомойка
         value: 0.5
       - id: spielplatz
         name: Play with Robik at the spielplatz
@@ -42,7 +51,7 @@ kids:
         name: Study and do homework
         value: 1.0
       - id: dishes
-        name: Pasodamoika
+        name: Посудомойка
         value: 0.5
       - id: spielplatz
         name: Play with Robik at the spielplatz

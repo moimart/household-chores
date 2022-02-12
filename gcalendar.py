@@ -34,7 +34,7 @@ class GoogleCalendar:
 
     def get_events(self):
         creds = None
-        creds = service_account.Credentials.from_service_account_file("creds.json", scopes=SCOPES)
+        creds = service_account.Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
         print(creds)
 
         try:
