@@ -36,7 +36,7 @@ class Service:
         while True:
             t0 = timer()
             self.timer.step(self.dt)
-            self.mqtt.loop()
+            self.mqtt.step(self.dt)
             self.kids.step(self.dt)
             t1 = timer()
 
