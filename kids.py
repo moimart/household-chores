@@ -82,7 +82,6 @@ class Kids:
         config["device"] = device
         config["device"]["identifiers"][0] = "{} {}".format(config["device"]["identifiers"][0],kid["name"])
 
-        self.mqtt.client.publish(config["state_topic"], 0)
         self.mqtt.client.publish(topic, json.dumps(config), retain=True)
         self.mqtt.client.subscribe(config["state_topic"])
 
