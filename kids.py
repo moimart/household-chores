@@ -43,6 +43,7 @@ class Kids:
                     print("Unknown payload: {}".format(payload))
                 print("Value accrued: {}".format(kid["value_accrued"]))
                 self.mqtt.client.publish(kid["config"]["state_topic"], kid["value_accrued"], retain = True)
+                print("Updating value at {} with {}".format(kid["config"]["state_topic"], kid["value_accrued"]))
                 return
 
     def step(self, dt):

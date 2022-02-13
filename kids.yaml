@@ -11,6 +11,9 @@ kids:
   - id: ernesto
     name: Ernesto
     tasks:
+      - id: Cleaning
+        name: Cleaning
+        value: 1.0
       - id: bed
         name: Do the bed
         value: 0.5
