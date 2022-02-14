@@ -1,6 +1,6 @@
 version: '3'
 services:
-
   household_chores_service:
     build: .
+    network_mode: "host"
     restart: always
