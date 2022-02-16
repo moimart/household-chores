@@ -1,10 +1,19 @@
-FROM python:3.8-buster
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-WORKDIR /household-chores
+# Install requirements for add-on
+RUN \
+  apk add --no-cache \
+    python3 py3-pip
 
-ADD . /household-chores
-WORKDIR /household-chores
-RUN apt-get install iputils-ping -y
-RUN pip install -r requirements.txt
 
-CMD [ "python", "./start.py" ]
+WORKDIR /app
+
+# Copy data for add-on
+COPY run.sh /app
+COPY . /app
+RUN pip3 install -r requirements.txt
+
+RUN chmod a+x /app/run.sh
+
+CMD [ "/app/run.sh" ]

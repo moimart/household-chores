@@ -39,6 +39,7 @@ kids:
         value: 1.5
   - id: azahara
     name: Azahara
+    unit_of_measurement: €
     tasks:
       - id: bed
         name: Do the bed

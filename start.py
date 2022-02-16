@@ -7,17 +7,17 @@ import yaml
 
 class Service:
     def __init__(self):
-        with open("config.yaml","r") as config:
+        with open("chores_config.yaml","r") as config:
             config = yaml.safe_load(config)
 
         self.timer = Timer(5, self)
-        
+
         self.gc = GoogleCalendar(config["types_of_garbage"],
                                  config["garbage_translations"])
 
-        self.mqtt = MQTTClient(config["mqtt"]["username"], 
-                                config["mqtt"]["password"], 
-                                config["mqtt"]["host"], 
+        self.mqtt = MQTTClient(config["mqtt"]["username"],
+                                config["mqtt"]["password"],
+                                config["mqtt"]["host"],
                                 config["mqtt"]["port"])
 
         self.kids = Kids(self.mqtt)
