@@ -1,0 +1,11 @@
+name: "Household Chores"
+description: "Track your garbage pickup day and your kid's chores (with allowance incentives)"
+version: "1.0.0"
+slug: "household_chores"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: before

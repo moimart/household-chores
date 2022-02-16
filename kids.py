@@ -82,6 +82,9 @@ class Kids:
         config["device"] = device
         config["device"]["identifiers"][0] = "{} {}".format(config["device"]["identifiers"][0],kid["name"])
 
+        if "unit_of_measurement" in kid:
+            config["unit_of_measurement"] = kid["unit_of_measurement"]
+
         self.mqtt.client.publish(topic, json.dumps(config), retain=True)
         self.mqtt.client.subscribe(config["state_topic"])
 
@@ -100,7 +103,7 @@ class Kids:
         config["object_id"] = "{}_{}_switch".format(id,task["id"])
         config["name"] = task["name"]
         config["state_topic"] = config["state_topic"].replace("#", id)
-        config["state_topic"] = config["state_topic"].replace("?", task["id"])
+        config["state_topic"] = config["state_topic"].replace("?", task["id"])    
 
         device = kids_device.copy()
         device["name"] = device["name"].replace("#", name)

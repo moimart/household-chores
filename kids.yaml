@@ -1,5 +1,6 @@
 kids:
   - id: robi
+    unit_of_measurement: €
     name: Robi
     tasks:
       - id: bed
@@ -10,6 +11,7 @@ kids:
         value: 0.1
   - id: ernesto
     name: Ernesto
+    unit_of_measurement: €
     tasks:
       - id: Cleaning
         name: Cleaning
