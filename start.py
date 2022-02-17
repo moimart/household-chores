@@ -4,21 +4,45 @@ from timer import Timer
 from timeit import default_timer as timer
 from kids import Kids
 import yaml
+import os
+import json
+from homeassistant_api import Client
 
 class Service:
     def __init__(self):
         with open("chores_config.yaml","r") as config:
             config = yaml.safe_load(config)
 
+        translations = dict()
+
         self.timer = Timer(5, self)
 
-        self.gc = GoogleCalendar(config["types_of_garbage"],
-                                 config["garbage_translations"])
+        types_of_garbage = config["types_of_garbage"]
+        translations = config["garbage_translations"]
 
-        self.mqtt = MQTTClient(config["mqtt"]["username"],
-                                config["mqtt"]["password"],
-                                config["mqtt"]["host"],
-                                config["mqtt"]["port"])
+        if "CONFIG_PATH" in os.environ:
+            with open(os.environ['CONFIG_PATH'],mode="r") as options_file:
+                config = json.load(options_file)
+
+            types_of_garbage = config["types_of_garbage"]
+
+            for item in config["garbage_translations"]:
+                translations[item["id"]] = item["tr"]
+
+            print(translations)
+
+        self.gc = GoogleCalendar(types_of_garbage, translations)
+
+        if 'MQTT_HOST' in os.environ:
+            self.mqtt = MQTTClient(os.environ['MQTT_USER'],
+                                    os.environ['MQTT_PASSWORD'],
+                                    os.environ['MQTT_HOST'],
+                                    int(os.environ['MQTT_PORT']))
+        else:
+            self.mqtt = MQTTClient(config["mqtt"]["username"],
+                                    config["mqtt"]["password"],
+                                    config["mqtt"]["host"],
+                                    config["mqtt"]["port"])
 
         self.kids = Kids(self.mqtt)
         self.dt = 0

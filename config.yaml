@@ -1,6 +1,6 @@
 name: "Household Chores"
 description: "Track your garbage pickup day and your kid's chores (with allowance incentives)"
-version: "1.0.0"
+version: "0.0.9"
 slug: "household_chores"
 arch:
   - aarch64
@@ -8,4 +8,88 @@ arch:
   - armhf
   - armv7
   - i386
-startup: before
+startup: services
+hassio_api: true
+hassio_role: default
+homeassistant_api: true
+services:
+  - mqtt:need
+map:
+  - config:rw
+  - addons:rw
+  - share:rw
+  - backup:rw
+options:
+  kids:
+    - id: kid1
+      name: John Doe
+      unit_of_measurement: $
+
+  tasks:
+    - kidid: kid1
+      id: bed
+      name: Do the bed
+      value: 3.0
+
+  types_of_garbage:
+    - Biogut
+    - Hausmüll
+    - Wertstoffe
+    - Paper
+
+  garbage_translations:
+    - id: Biogut
+      tr: Bio
+    - id: Hausmüll
+      tr: Gray Garbage
+    - id: Wertstoffe
+      tr: Plastic
+    - id: Paper
+      tr: Paper
+
+  google_service_account:
+    type: null
+    project_id: null
+    private_key_id: null
+    private_key: null
+    client_email: null
+    client_id: null
+    auth_uri: null
+    token_uri: null
+    auth_provider_x509_cert_url: null
+    client_x509_url: null
+
+  update_interval: 43200
+
+schema:
+  google_service_account:
+    type: str
+    project_id: str
+    private_key_id: str
+    private_key: str
+    client_email: str
+    client_id: str
+    auth_uri: str
+    token_uri: str
+    auth_provider_x509_cert_url: str
+    client_x509_url: str
+
+  kids:
+    - id: str
+      name: str
+      unit_of_measurement: str?
+
+  tasks:
+    - kidid: str
+      id: str
+      name: str
+      value: float
+
+  types_of_garbage:
+    - str
+
+  garbage_translations:
+    - id: str
+      tr: str
+
+  update_interval: int

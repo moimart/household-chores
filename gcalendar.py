@@ -2,6 +2,9 @@ from datetime import datetime, timedelta
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2 import service_account
+from homeassistant_api import Client
+import os
+import json
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
@@ -29,13 +32,34 @@ class GoogleCalendar:
             strday = "3rd"
         else:
             strday = str(day) + "th"
-    
+
         return "{} {}".format(date.strftime("%A"),strday)
 
+    def load_credentials(self):
+        service_account_info = None
+
+        try:
+            service_account_info = json.load(open('credentials.json'))
+        except Exception as e:
+            pass
+
+        if "CONFIG_PATH" in os.environ:
+            with open(os.environ['CONFIG_PATH'],mode="r") as options_file:
+                config = json.load(options_file)
+
+                if 'google_service_account' in config:
+                    service_account_info = config['google_service_account']
+
+        return service_account_info
     def get_events(self):
+        service_account_info = self.load_credentials()
+
+        if service_account_info == None:
+            print("Credentials are not setup")
+            return []
+
         creds = None
-        creds = service_account.Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
-        print(creds)
+        creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
 
         try:
             service = build('calendar', 'v3', credentials=creds)
@@ -46,7 +70,6 @@ class GoogleCalendar:
                                                 maxResults=3, singleEvents=True,
                                                 orderBy='startTime').execute()
             events = events_result.get('items', [])
-
             if not events:
                 print('No upcoming events found.')
                 return
@@ -57,13 +80,13 @@ class GoogleCalendar:
                 for garbage in self.words:
                     if garbage in event['summary']:
                         date = self.string_date(datetime.strptime(event['start'].get('date'),"%Y-%m-%d").date())
-                        event = { 
-                            "garbage": self.translations[garbage], 
+                        event = {
+                            "garbage": self.translations[garbage],
                             "when":  date
                         }
                         next_events.append(event)
                         break
-                
+
             return next_events
         except HttpError as error:
             print('An error occurred: %s' % error)

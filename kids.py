@@ -3,6 +3,8 @@ import yaml
 import json
 from timer import Timer
 import pycron
+import os
+from homeassistant_api import Client
 
 class Kids:
     def __init__(self, mqtt):
@@ -18,13 +20,25 @@ class Kids:
         self.timer.active = True
 
     def start(self):
-        with open("kids.yaml") as file:
-            kidsconf = yaml.safe_load(file)
+        kidsconf = { "kids": [] }
+        if "CONFIG_PATH" in os.environ:
+            with open(os.environ['CONFIG_PATH'],mode="r") as options_file:
+                config = json.load(options_file)
 
-        if kidsconf is None:
-            print("No kids found")
-            return
-        
+            kidsconf["kids"] = config["kids"]
+            for kid in kidsconf["kids"]:
+                kid["tasks"] = []
+                for task in config["tasks"]:
+                    if task["kidid"] == kid["id"]:
+                        kid["tasks"].append({"id": task["id"], "name": task["name"], "value": task["value"]})
+        else:
+            with open("kids.yaml") as file:
+                kidsconf = yaml.safe_load(file)
+
+            if kidsconf is None:
+                print("No kids found")
+                return
+
         for kid in kidsconf["kids"]:
             self.create_kid(kid)
 
@@ -89,7 +103,7 @@ class Kids:
         self.mqtt.client.subscribe(config["state_topic"])
 
         self.kids[kid["id"]] = { "switches" : [], "name" : kid["name"], "value_accrued" : 0, "config" : config }
-        
+
         for task in kid["tasks"]:
             self.create_switch(kid["id"], kid["name"], task)
 
@@ -103,7 +117,7 @@ class Kids:
         config["object_id"] = "{}_{}_switch".format(id,task["id"])
         config["name"] = task["name"]
         config["state_topic"] = config["state_topic"].replace("#", id)
-        config["state_topic"] = config["state_topic"].replace("?", task["id"])    
+        config["state_topic"] = config["state_topic"].replace("?", task["id"])
 
         device = kids_device.copy()
         device["name"] = device["name"].replace("#", name)
