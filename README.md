@@ -11,11 +11,11 @@ Household Chores is an application for the whole family to be used with Home Aut
 
 It helps track the daily chores for all members of the family you want and adds a reward when a track is completed. At midnight, the tasks are reset, the scores are accrued and the tracking starts again.
 
-![Kid Chores Dashboard in Home Assistant](images/kids_chores.jpeg)
+![Kid Chores Dashboard in Home Assistant](https://raw.githubusercontent.com/moimart/household-chores/main/images/kids_chores.jpeg)
 
 Optionally, if you have a Google Calendar with the dates of the Garbage Pickup (very common in Germany,s for example), you can create an easier-to-consume sensor that tells when you have to take out your garbage for pickup. As it is a more straightforward sensor, it helps you create more powerful automations. (Don't forget to share your calendar with the service account email)
 
-![Garbage Sensors in Home Assistant](images/garbage_sensors.jpeg)
+![Garbage Sensors in Home Assistant](https://raw.githubusercontent.com/moimart/household-chores/main/images/garbage_sensors.jpeg)
 
 ## Home Assistant Add-on
 
