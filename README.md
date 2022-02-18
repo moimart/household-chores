@@ -1,6 +1,7 @@
 # Household Chores
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/moimartb)
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fmoimart%2Fhousehold-chores)
 
 - Do you need to incentivize your kids to their chores?
 - Do you want your kids to be fairly rewarded for their tasks at home?
