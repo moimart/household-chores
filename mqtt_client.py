@@ -21,6 +21,9 @@ class MQTTClient:
             self.delegate.on_message(msg.topic, msg.payload)
 
     def update_garbage(self, events):
+        if len(events) == 0:
+            return
+
         self.client.publish("kikkei/household/garbage/next", events[0].get("garbage"),retain=True)
         self.client.publish("kikkei/household/garbage/next_date", events[0].get("when"),retain=True)
 

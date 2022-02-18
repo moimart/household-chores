@@ -10,8 +10,12 @@ from homeassistant_api import Client
 
 class Service:
     def __init__(self):
-        with open("chores_config.yaml","r") as config:
-            config = yaml.safe_load(config)
+        try:
+            with open("chores_config.yaml","r") as config:
+                config = yaml.safe_load(config)
+        except Exception as e:
+            with open("rename_to_config.yaml","r") as config:
+                config = yaml.safe_load(config)
 
         translations = dict()
 
@@ -28,8 +32,6 @@ class Service:
 
             for item in config["garbage_translations"]:
                 translations[item["id"]] = item["tr"]
-
-            print(translations)
 
         self.gc = GoogleCalendar(types_of_garbage, translations)
 

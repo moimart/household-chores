@@ -51,6 +51,7 @@ class GoogleCalendar:
                     service_account_info = config['google_service_account']
 
         return service_account_info
+
     def get_events(self):
         service_account_info = self.load_credentials()
 
@@ -59,7 +60,12 @@ class GoogleCalendar:
             return []
 
         creds = None
-        creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
+
+        try:
+            creds = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
+        except ValueError as ve:
+            print(ve)
+            return []
 
         try:
             service = build('calendar', 'v3', credentials=creds)
