@@ -3,7 +3,7 @@
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/moimartb)
 [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fmoimart%2Fhousehold-chores)
 
-- Do you need to incentivize your kids to their chores?
+- Do you need to incentivize your kids to do their chores?
 - Do you want your kids to be fairly rewarded for their tasks at home?
 - Do you want to know when to take care of the next garbage pickup coming to your house?
 
@@ -88,7 +88,7 @@ In order to access your Google Calendar, you need to create a service account an
     client_x509_url: "(fill the value for this field from credentials.json)"
 ```
 
-Lastly add how often you want to check the calendar for updates in seconds:
+Lastly, add how often you want to check the calendar for updates in seconds:
 
 ```
 update_interval: 43200 # 12 hours = 60*60*12
