@@ -1,5 +1,5 @@
 name: "Household Chores"
-description: "Track your garbage pickup day and your kid's chores (with allowance incentives)"
+description: "Track your kid's chores (with allowance incentives) and your garbage pickup day"
 version: "0.0.9"
 slug: "household_chores"
 arch:
