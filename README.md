@@ -13,7 +13,7 @@ It helps track the daily chores for all members of the family you want and adds 
 
 ![Kid Chores Dashboard in Home Assistant](images/kids_chores.jpeg)
 
-Optionally, if you have a Google Calendar with the dates of the Garbage Pickup (very common in Germany for example), you can create an easier to consume sensor that tells when you have to take out your garbage for pickup. As it is a more straightforward sensor, it helps you create more powerful automations.
+Optionally, if you have a Google Calendar with the dates of the Garbage Pickup (very common in Germany,s for example), you can create an easier-to-consume sensor that tells when you have to take out your garbage for pickup. As it is a more straightforward sensor, it helps you create more powerful automations. (Don't forget to share your calendar with the service account email)
 
 ![Garbage Sensors in Home Assistant](images/garbage_sensors.jpeg)
 
