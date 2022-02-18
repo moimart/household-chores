@@ -48,31 +48,31 @@ options:
       tr: Paper
 
   google_service_account:
-    type: null
-    project_id: null
-    private_key_id: null
-    private_key: null
-    client_email: null
-    client_id: null
-    auth_uri: null
-    token_uri: null
-    auth_provider_x509_cert_url: null
-    client_x509_url: null
+    type: ""
+    project_id: ""
+    private_key_id: ""
+    private_key: ""
+    client_email: ""
+    client_id: ""
+    auth_uri: ""
+    token_uri: ""
+    auth_provider_x509_cert_url: ""
+    client_x509_url: ""
 
   update_interval: 43200
 
 schema:
   google_service_account:
-    type: str
-    project_id: str
-    private_key_id: str
-    private_key: str
-    client_email: str
-    client_id: str
-    auth_uri: str
-    token_uri: str
-    auth_provider_x509_cert_url: str
-    client_x509_url: str
+    type: str?
+    project_id: str?
+    private_key_id: str?
+    private_key: str?
+    client_email: str?
+    client_id: str?
+    auth_uri: str?
+    token_uri: str?
+    auth_provider_x509_cert_url: str?
+    client_x509_url: str?
 
   kids:
     - id: str
@@ -86,10 +86,10 @@ schema:
       value: float
 
   types_of_garbage:
-    - str
+    - str?
 
   garbage_translations:
-    - id: str
-      tr: str
+    - id: str?
+      tr: str?
 
   update_interval: int
