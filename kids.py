@@ -41,7 +41,7 @@ class Kids:
                 return
 
         for kid in kidsconf["kids"]:
-            print(f"Creating kid {kid["name"]}")
+            print(f"Creating kid {kid['name']}")
             self.create_kid(kid)
 
     def process_button(self, kid, swid, payload):
