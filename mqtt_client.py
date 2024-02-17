@@ -32,7 +32,7 @@ class MQTTClient:
             self.client.publish("kikkei/household/garbage/nextafter_date", events[1].get("when"))
 
     def __init__(self, username, password, host, port):
-        self.client = mqtt.Client()
+        self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
 
         self.client.username_pw_set(username, password)
 
