@@ -20,6 +20,7 @@ class Kids:
         self.timer.active = True
 
     def start(self):
+        print("Creating kids")
         kidsconf = { "kids": [] }
         if "CONFIG_PATH" in os.environ:
             with open(os.environ['CONFIG_PATH'],mode="r") as options_file:
@@ -40,6 +41,7 @@ class Kids:
                 return
 
         for kid in kidsconf["kids"]:
+            print(f"Creating kid {kid["name"]}")
             self.create_kid(kid)
 
     def process_button(self, kid, swid, payload):
