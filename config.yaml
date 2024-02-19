@@ -2,6 +2,7 @@ name: "Household Chores"
 description: "Track your kid's chores (with allowance incentives) and your garbage pickup day"
 version: "0.0.9"
 slug: "household_chores"
+init: false
 arch:
   - aarch64
   - amd64

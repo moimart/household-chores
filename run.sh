@@ -16,4 +16,5 @@ CONFIG_PATH=/data/options.json
 
 export CONFIG_PATH
 
+source .venv/bin/activate
 python3 -u start.py
